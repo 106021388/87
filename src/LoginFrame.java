@@ -41,6 +41,7 @@ public class LoginFrame extends JFrame {
                     MainFrame mainFrame = new MainFrame(LoginFrame.this);
                     mainFrame.setVisible(true);
                     LoginFrame.this.setVisible(false);
+
                 } else{
                     JOptionPane.showMessageDialog(LoginFrame.this,"Error");
                     System.out.print("no"+jtfID.getText() + "\tpw");

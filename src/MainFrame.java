@@ -38,7 +38,8 @@ public class MainFrame extends JFrame {
         jmb.add(jmloto);
         jmb.add(jmset);
         jmset.add(jmisetfont);
-        jmisetfont.add(jpanel1);
+
+        jpanel1.setBounds(0,0,200,400);
         jpanel1.add(jlbFontFamily);
         jpanel1.add(jlbFontSize);
         jpanel1.add(jlbFontStyle);
@@ -47,32 +48,32 @@ public class MainFrame extends JFrame {
         jpanel1.add(jcbFStyle);
 
 
+                 jmisetfont.addActionListener(new ActionListener() {
+                     @Override
+                     public void actionPerformed(ActionEvent actionEvent) {
+                         int result = JOptionPane.showConfirmDialog(MainFrame.this, jpanel1, "Font setting", JOptionPane.OK_CANCEL_OPTION);
+                         int fontstyle = 0;
+                         switch (jcbFStyle.getSelectedIndex()) {
+                             case 0:
+                                 fontstyle = Font.PLAIN;
+                                 break;
+                             case 1:
+                                 fontstyle = Font.BOLD;
+                                 break;
+                             case 2:
+                                 fontstyle = Font.ITALIC;
+                                 break;
+                             case 3:
+                                 fontstyle = Font.BOLD + Font.ITALIC;
+                                 break;
+                         }
+                         if (result == JOptionPane.OK_OPTION) {
+                             UIManager.put("Menu.font", new Font(jtfFamily.getText(), fontstyle, Integer.parseInt(jtfSize.getText())));
+                         }
+                     }
 
 
-         jmisetfont.addActionListener(new ActionListener() {
-             @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            int result = JOptionPane.showConfirmDialog(MainFrame.this,jpanel1,"Font setting",JOptionPane.OK_CANCEL_OPTION);
-            int fontstyle = 0;
-            switch (jcbFStyle.getSelectedIndex()){
-                case 0:
-                    fontstyle =  Font.PLAIN;
-                    break;
-                case 1:
-                    fontstyle =  Font.BOLD;
-                    break;
-                case 2:
-                    fontstyle =  Font.ITALIC;
-                    break;
-                case 3:
-                    fontstyle =  Font.BOLD + Font.ITALIC;
-                    break;
-            }
-        if(result == JOptionPane.OK_OPTION){
-                UIManager.put("Menu.font",new Font(jtfFamily.getText(),fontstyle,Integer.parseInt(jtfSize.getText())));
-        }
-        }
-    });
+                 });
     jInternalFrame.setBounds(0,0,200,80);
         jmloto.addActionListener(new ActionListener() {
             @Override
